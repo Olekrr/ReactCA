@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <main>
-        {/* Placeholder for main content */}
-        <p>Welcome to our React application!</p>
-      </main>
+      <Layout>
+        Placeholder for app
+      </Layout>
     </div>
   );
 }
