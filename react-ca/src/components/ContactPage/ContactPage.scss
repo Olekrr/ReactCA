@@ -1,0 +1,25 @@
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-control,
+  .btn {
+    width: 100%;
+    display: block;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .custom-button-width {
+    width: 50%;
+  }
+}
