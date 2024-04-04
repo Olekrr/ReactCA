@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchProducts } from '../../utils/api';
+import { useCart } from '../../context/CartContext'; 
 
 const ProductPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -24,6 +26,11 @@ const ProductPage = () => {
     getProduct();
   }, [productId]);
 
+  const handleAddToCart = () => {
+    addToCart(product); 
+    console.log(`Added ${product.title} to cart`); 
+  };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -37,7 +44,7 @@ const ProductPage = () => {
   const discountPercentage = hasDiscount
     ? ((product.price - product.discountedPrice) / product.price) * 100
     : 0;
-  
+
   return (
     <div>
       <h2>{product.title}</h2>
@@ -49,7 +56,7 @@ const ProductPage = () => {
           <span> (Discount: {discountPercentage.toFixed(2)}%, Original Price: ${product.price})</span>
         )}
       </p>
-      <button onClick={() => console.log(`Added ${product.title} to cart`)}>Add to Cart</button>
+      <button onClick={handleAddToCart}>Add to Cart</button> 
       {product.reviews && product.reviews.length > 0 && (
         <div>
           <h3>Reviews</h3>
@@ -65,4 +72,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-
