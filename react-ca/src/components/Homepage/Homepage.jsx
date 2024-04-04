@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchProducts } from '../../utils/api';
 import Product from '../Product/Product';
+import SearchBar from '../Searchbar/Searchbar';
 import "./Homepage.scss"
 
 const HomePage = () => {
@@ -22,6 +23,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+       <SearchBar products={products} />
       <div className="product-grid">
         {products.map(product => (
           <Product key={product.id} {...product} />
