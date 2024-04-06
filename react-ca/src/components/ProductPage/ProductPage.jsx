@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchProducts } from '../../utils/api';
-import { useCart } from '../../context/CartContext'; 
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { fetchProducts } from "../../utils/api";
+import { useCart } from "../../context/CartContext";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -14,7 +14,7 @@ const ProductPage = () => {
       try {
         const response = await fetchProducts(productId);
         if (!response.data) {
-          throw new Error('Product not found');
+          throw new Error("Product not found");
         }
         setProduct(response.data);
         setError(null);
@@ -27,8 +27,7 @@ const ProductPage = () => {
   }, [productId]);
 
   const handleAddToCart = () => {
-    addToCart(product); 
-    console.log(`Added ${product.title} to cart`); 
+    addToCart(product);
   };
 
   if (error) {
@@ -39,7 +38,7 @@ const ProductPage = () => {
     return <div>Loading product...</div>;
   }
 
-  const imageUrl = product.image ? product.image.url : '';
+  const imageUrl = product.image ? product.image.url : "";
   const hasDiscount = product.discountedPrice < product.price;
   const discountPercentage = hasDiscount
     ? ((product.price - product.discountedPrice) / product.price) * 100
@@ -48,7 +47,7 @@ const ProductPage = () => {
   return (
     <div>
       <h2>{product.title}</h2>
-      <img src={imageUrl} alt={product.title} style={{ maxWidth: '100%', height: 'auto' }} />
+      <img src={imageUrl} alt={product.title} style={{ maxWidth: "100%", height: "auto" }} />
       <p>{product.description}</p>
       <p>
         Price: ${product.discountedPrice}
@@ -56,7 +55,7 @@ const ProductPage = () => {
           <span> (Discount: {discountPercentage.toFixed(2)}%, Original Price: ${product.price})</span>
         )}
       </p>
-      <button onClick={handleAddToCart}>Add to Cart</button> 
+      <button onClick={handleAddToCart}>Add to Cart</button>
       {product.reviews && product.reviews.length > 0 && (
         <div>
           <h3>Reviews</h3>

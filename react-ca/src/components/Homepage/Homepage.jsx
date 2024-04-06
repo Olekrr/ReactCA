@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { fetchProducts } from '../../utils/api';
-import Product from '../Product/Product';
-import SearchBar from '../Searchbar/Searchbar';
-import "./Homepage.scss"
+import React, { useState, useEffect } from "react";
+import { fetchProducts } from "../../utils/api";
+import Product from "../Product/Product";
+import SearchBar from "../Searchbar/Searchbar";
+import "./Homepage.scss";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -16,16 +16,15 @@ const HomePage = () => {
         console.error("Error fetching products:", error);
       }
     };
-  
+
     getProducts();
   }, []);
-  
 
   return (
     <div className="home-page">
-       <SearchBar products={products} />
+      <SearchBar products={products} />
       <div className="product-grid">
-        {products.map(product => (
+        {products.map((product) => (
           <Product key={product.id} {...product} />
         ))}
       </div>

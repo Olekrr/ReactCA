@@ -51,7 +51,7 @@ const ContactPage = () => {
             value={formData.fullName}
             onChange={handleChange}
             required
-            minLength={3}
+            minLength="3"
           />
         </div>
         <div className="mb-3">
@@ -66,7 +66,7 @@ const ContactPage = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            minLength={3}
+            minLength="3"
           />
         </div>
         <div className="mb-3">
@@ -95,7 +95,7 @@ const ContactPage = () => {
             value={formData.body}
             onChange={handleChange}
             required
-            minLength={3}
+            minLength="3"
           ></textarea>
         </div>
         <div className="button-container">
