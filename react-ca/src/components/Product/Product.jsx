@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Product.scss'; 
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Product.scss";
 
 const Product = ({ id, title, description, image, price }) => {
   return (

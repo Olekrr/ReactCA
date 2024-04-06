@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 const CheckoutSuccess = () => {
-  const { clearCart } = useCart(); 
+  const { clearCart } = useCart();
 
   React.useEffect(() => {
-    clearCart(); 
+    clearCart();
   }, [clearCart]);
 
   return (
