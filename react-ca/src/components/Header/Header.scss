@@ -1,17 +1,43 @@
-header {
+.header {
+  position: sticky;
+  top: 0; 
+  z-index: 2; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #007bff; 
+  box-shadow: 0 4px 6px #0000001a;
+
+  .navbar {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    background-color: #eeeeee;
-    .navbar {
-      a {
+
+    .nav-link {
+      text-decoration: none;
+      margin-right: 2rem;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #caf0f8;
         text-decoration: none;
-        margin-right: 1rem;
-        color: #333333;
-        &:hover {
-          color: #000000;
-        }
       }
     }
   }
-  
+
+  .cart-icon-wrapper {
+    display: flex;
+    align-items: center;
+
+    svg {
+      fill: #ffffff;
+      transition: fill 0.3s ease;
+
+      &:hover {
+        fill: #caf0f8;
+      }
+    }
+  }
+}
