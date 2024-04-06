@@ -1,9 +1,16 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutPage = () => {
-  const { cart } = useCart();
+  const navigate = useNavigate();
+  const { cart, clearCart } = useCart(); 
   const totalPrice = cart.reduce((total, product) => total + product.discountedPrice, 0);
+
+  const handleCheckout = () => {
+    clearCart(); 
+    navigate('/checkout-success'); 
+  };
 
   return (
     <div>
@@ -17,7 +24,7 @@ const CheckoutPage = () => {
         ))}
       </ul>
       <h3>Total: ${totalPrice.toFixed(2)}</h3>
-      <button onClick={() => alert('Checkout process here.')}>Checkout</button>
+      <button onClick={handleCheckout}>Checkout</button>
     </div>
   );
 };
