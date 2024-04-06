@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import CartIcon from "../CartIcon/CartIcon.jsx";
+import CartIcon from "../CartIcon/CartIcon";
 
 const Header = () => {
   return (
-    <header>
+    <header className="header">
       <nav className="navbar" aria-label="Main navigation">
-        <Link to="/" aria-label="Home page">Home</Link>
-        <Link to="/contact" aria-label="Contact page">Contact</Link>
+        <Link className="nav-link" to="/" aria-label="Home page">Home</Link>
+        <Link className="nav-link" to="/contact" aria-label="Contact page">Contact</Link>
       </nav>
-      <CartIcon /> 
+      <div className="cart-icon-wrapper">
+        <CartIcon /> 
+      </div>
     </header>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProducts } from "../../utils/api";
 import { useCart } from "../../context/CartContext";
+import "./ProductPage.scss";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -44,30 +45,31 @@ const ProductPage = () => {
     ? ((product.price - product.discountedPrice) / product.price) * 100
     : 0;
 
-  return (
-    <div>
-      <h2>{product.title}</h2>
-      <img src={imageUrl} alt={product.title} style={{ maxWidth: "100%", height: "auto" }} />
-      <p>{product.description}</p>
-      <p>
-        Price: ${product.discountedPrice}
-        {hasDiscount && (
-          <span> (Discount: {discountPercentage.toFixed(2)}%, Original Price: ${product.price})</span>
+    return (
+      <div className="product-page-container">
+        <h2>{product.title}</h2>
+        <img src={imageUrl} alt={product.title} />
+        <p>{product.description}</p>
+        <p>
+          Price: ${product.discountedPrice}
+          {hasDiscount && (
+            <span> (Discount: {discountPercentage.toFixed(2)}%, Original Price: ${product.price})</span>
+          )}
+        </p>
+        <button onClick={handleAddToCart}>Add to Cart</button>
+        {product.reviews && product.reviews.length > 0 && (
+          <div className="reviews-section">
+            <h3>Reviews</h3>
+            {product.reviews.map((review) => (
+              <div key={review.id}>
+                <p><strong>{review.username}</strong>: {review.description} - {review.rating} Stars</p>
+              </div>
+            ))}
+          </div>
         )}
-      </p>
-      <button onClick={handleAddToCart}>Add to Cart</button>
-      {product.reviews && product.reviews.length > 0 && (
-        <div>
-          <h3>Reviews</h3>
-          {product.reviews.map((review) => (
-            <div key={review.id}>
-              <p><strong>{review.username}</strong>: {review.description} - {review.rating} Stars</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+    
 };
 
 export default ProductPage;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Searchbar.scss";
 
 const SearchBar = ({ products }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -13,22 +14,22 @@ const SearchBar = ({ products }) => {
       : [];
 
   return (
-    <div>
+    <div className="search-bar-container">
       <input
         type="text"
+        className="search-input"
         placeholder="Search products..."
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
         aria-label="Search products"
       />
       {filteredProducts.length > 0 && (
-        <div>
+        <div className="search-results">
           {filteredProducts.slice(0, 5).map((product) => (
             <div
               key={product.id}
+              className="search-result-item"
               onClick={() => navigate(`/product/${product.id}`)}
-              style={{ cursor: "pointer" }}
-              role="button"
               tabIndex="0"
               onKeyPress={(e) =>
                 e.key === "Enter" && navigate(`/product/${product.id}`)

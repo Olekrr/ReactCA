@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ContactPage.scss";
+import "./ContactPage.scss"; 
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -19,26 +19,12 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      Object.values(formData).every((field) => field.trim().length >= 3) &&
-      /\S+@\S+\.\S+/.test(formData.email)
-    ) {
-      console.log(formData);
-      setFormData({
-        fullName: "",
-        subject: "",
-        email: "",
-        body: "",
-      });
-    } else {
-      alert("Please fill out the form correctly.");
-    }
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container"> 
       <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit} className="mt-4 contact-form">
+      <form onSubmit={handleSubmit} className="contact-form"> 
         <div className="mb-3">
           <label htmlFor="fullName" className="form-label">
             Full Name

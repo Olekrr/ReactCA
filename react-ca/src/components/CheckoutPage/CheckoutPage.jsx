@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import "./CheckoutPage.scss";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div>
+    <div className="checkout-container">
       <h2>Checkout</h2>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -38,3 +39,4 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
