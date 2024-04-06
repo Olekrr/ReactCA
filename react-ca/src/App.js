@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import ContactPage from './components/ContactPage/ContactPage';
 import ProductPage from './components/ProductPage/ProductPage';
 import CheckoutPage from './components/CheckoutPage/CheckoutPage';
+import CheckoutSuccess from './components/CheckoutSuccess/CheckoutSuccess';
 import { CartProvider } from './context/CartContext';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/checkout-success" element={<CheckoutSuccess />} />
           </Routes>
         </Layout>
       </CartProvider>
