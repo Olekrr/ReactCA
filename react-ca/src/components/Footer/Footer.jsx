@@ -4,7 +4,7 @@ import "./Footer.scss"
 const Footer = () => {
     return (
         <footer className="footer">
-            <p>&copy; {new Date().getFullYear()}React CA placeholder</p>
+            <p>&copy; {new Date().getFullYear()} React CA </p>
         </footer>
     )
 }

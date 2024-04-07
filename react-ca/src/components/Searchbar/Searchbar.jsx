@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import useDebounce from "./Hooks/Debounce"; 
+import SearchResultItem from "./SearchResults/SearchResults"; 
 import "./Searchbar.scss";
 
 const SearchBar = ({ products }) => {
   const [searchInput, setSearchInput] = useState("");
-  const navigate = useNavigate();
+  const debouncedSearchInput = useDebounce(searchInput, 100); 
 
-  const filteredProducts =
-    searchInput.length > 0
-      ? products.filter((product) =>
-          product.title.toLowerCase().includes(searchInput.toLowerCase())
-        )
-      : [];
+  const filteredProducts = debouncedSearchInput
+    ? products.filter((product) =>
+        product.title.toLowerCase().includes(debouncedSearchInput.toLowerCase())
+      )
+    : [];
 
   return (
     <div className="search-bar-container">
@@ -25,19 +25,8 @@ const SearchBar = ({ products }) => {
       />
       {filteredProducts.length > 0 && (
         <div className="search-results">
-          {filteredProducts.slice(0, 5).map((product) => (
-            <div
-              key={product.id}
-              className="search-result-item"
-              onClick={() => navigate(`/product/${product.id}`)}
-              tabIndex="0"
-              onKeyPress={(e) =>
-                e.key === "Enter" && navigate(`/product/${product.id}`)
-              }
-              aria-label={`View ${product.title}`}
-            >
-              {product.title}
-            </div>
+          {filteredProducts.slice(0, 10).map((product) => (
+            <SearchResultItem key={product.id} product={product} />
           ))}
         </div>
       )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import "./CheckoutSuccess.scss";
@@ -6,7 +6,7 @@ import "./CheckoutSuccess.scss";
 const CheckoutSuccess = () => {
   const { clearCart } = useCart();
 
-  React.useEffect(() => {
+  useEffect(() => {
     clearCart();
   }, [clearCart]);
 
@@ -14,7 +14,7 @@ const CheckoutSuccess = () => {
     <div className="checkout-success-container">
       <h2>Checkout Successful!</h2>
       <p>Your order has been placed successfully.</p>
-      <Link to="/">Back to Store</Link>
+      <Link to="/" className="back-to-store-link">Back to Store</Link>
     </div>
   );
 };
