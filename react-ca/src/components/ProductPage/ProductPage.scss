@@ -65,3 +65,26 @@
     }
   }
 }
+.notification {
+  position: fixed;
+  top: 20px;
+  margin-top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  animation: fadeOut 10s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
