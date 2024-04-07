@@ -1,13 +1,22 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useProductData from "./Hooks/ProductData";
-import useCartActions from "./Hooks/CartActions"; 
-import useNotification from "./Hooks/Notifications"; 
-import useConfirmModal from "./Hooks/ConfirmModal"; 
+import useCartActions from "./Hooks/CartActions";
+import useNotification from "./Hooks/Notifications";
+import useConfirmModal from "./Hooks/ConfirmModal";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import ReviewsSection from "./ReviewsSection/ReviewsSection";
 import "./ProductPage.scss";
+
+/**
+ * The main page for displaying a single product's details, including an option to add
+ * the product to the cart, and viewing reviews. It also handles notifications and confirmation
+ * modals related to cart actions.
+ *
+ * @returns {React.ReactElement} The Product Page, composed of the product details, reviews,
+ * confirmation modal and notification messages.
+ */
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -18,7 +27,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (isProductInCart(product?.id)) {
-      openModal(); 
+      openModal();
     } else {
       addItemToCart(product);
       triggerNotification(`Added "${product.title}" to cart!`);
@@ -37,10 +46,10 @@ const ProductPage = () => {
     <div className="product-page-container">
       <ConfirmModal
         isOpen={isModalOpen}
-        onClose={closeModal} 
+        onClose={closeModal}
         onConfirm={() => {
           addItemToCart(product);
-          closeModal(); 
+          closeModal();
           triggerNotification(`Added "${product.title}" to cart!`);
         }}
         productName={product.title}
