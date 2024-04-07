@@ -1,20 +1,17 @@
 import React from "react";
 import { useCart } from "../../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import CartItem from "./CartItem/CartItem"; 
+import useCheckout from "./Hooks/Checkout"; 
 import "./CheckoutPage.scss";
 
 const CheckoutPage = () => {
-  const navigate = useNavigate();
   const { cart, clearCart } = useCart();
+  const { handleCheckout } = useCheckout(clearCart);
+
   const totalPrice = cart.reduce(
     (total, product) => total + product.discountedPrice,
     0
   );
-
-  const handleCheckout = () => {
-    clearCart();
-    navigate("/checkout-success");
-  };
 
   return (
     <div className="checkout-container">
@@ -24,14 +21,12 @@ const CheckoutPage = () => {
       ) : (
         <>
           <ul>
-            {cart.map((product, index) => (
-              <li key={index}>
-                {product.title} - ${product.discountedPrice.toFixed(2)}
-              </li>
+            {cart.map((product) => (
+              <CartItem key={product.id} product={product} />
             ))}
           </ul>
           <h3>Total: ${totalPrice.toFixed(2)}</h3>
-          <button onClick={handleCheckout}>Checkout</button>
+          <button onClick={handleCheckout} aria-label="Complete checkout">Checkout</button>
         </>
       )}
     </div>

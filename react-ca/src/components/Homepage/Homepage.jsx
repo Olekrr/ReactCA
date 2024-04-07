@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { fetchProducts } from "../../utils/api";
+import React from "react";
+import useProducts from "./Hooks/Products"; 
 import Product from "../Product/Product";
 import SearchBar from "../Searchbar/Searchbar";
 import "./Homepage.scss";
 
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
+  const { products, error, loading } = useProducts();
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await fetchProducts();
-        setProducts(response);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
+  if (loading) {
+    return <div className="loading-container"><p>Loading products...</p></div>;
+  }
 
-    getProducts();
-  }, []);
+  if (error) {
+    return <p>Error fetching products.</p>;
+  }
 
   return (
     <div className="home-page">
