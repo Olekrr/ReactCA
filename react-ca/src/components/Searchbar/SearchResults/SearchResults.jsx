@@ -1,6 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Renders an individual search result item. Clicking on the item or pressing Enter
+ * navigates to the product's detail page.
+ *
+ * @param {Object} props - Component props.
+ * @param {Object} props.product - The product object for the search result item.
+ * @returns {React.ReactElement} A clickable div for a single search result.
+ */
+
 const SearchResultItem = ({ product }) => {
   const navigate = useNavigate();
 

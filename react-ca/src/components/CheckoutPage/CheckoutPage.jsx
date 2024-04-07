@@ -1,8 +1,20 @@
 import React from "react";
 import { useCart } from "../../context/CartContext";
-import CartItem from "./CartItem/CartItem"; 
-import useCheckout from "./Hooks/Checkout"; 
+import CartItem from "./CartItem/CartItem";
+import useCheckout from "./Hooks/Checkout";
 import "./CheckoutPage.scss";
+
+/**
+ * Represents the checkout page where users can review items in their cart,
+ * see the total price, and complete their purchase.
+ *
+ * This component utilizes the "useCart" context to access and display cart items,
+ * and the "useCheckout" custom hook for handling the checkout process.
+ *
+ * @component
+ * @example
+ * return <CheckoutPage />;
+ */
 
 const CheckoutPage = () => {
   const { cart, clearCart } = useCart();
@@ -26,7 +38,9 @@ const CheckoutPage = () => {
             ))}
           </ul>
           <h3>Total: ${totalPrice.toFixed(2)}</h3>
-          <button onClick={handleCheckout} aria-label="Complete checkout">Checkout</button>
+          <button onClick={handleCheckout} aria-label="Complete checkout">
+            Checkout
+          </button>
         </>
       )}
     </div>
@@ -34,4 +48,3 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-

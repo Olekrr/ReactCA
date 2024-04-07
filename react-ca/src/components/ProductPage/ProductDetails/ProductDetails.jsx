@@ -1,5 +1,16 @@
 import React from "react";
-import "../ProductPage.scss"; 
+import "../ProductPage.scss";
+
+/**
+ * Displays detailed information about a product, including its image, title, description,
+ * price, and a button to add the product to the shopping cart.
+ *
+ * @param {Object} props - Component props.
+ * @param {Object} props.product - The product object to display.
+ * @param {Function} props.onAddToCart - Function to call when adding the product to the cart.
+ *
+ * @returns {React.ReactElement} A section with product details and an "Add to Cart" button.
+ */
 
 const ProductDetails = ({ product, onAddToCart }) => {
   const imageUrl = product.image ? product.image.url : "";
@@ -16,7 +27,11 @@ const ProductDetails = ({ product, onAddToCart }) => {
       <p>
         Price: ${product.discountedPrice}
         {hasDiscount && (
-          <span> (Discount: {discountPercentage.toFixed(2)}%, Original Price: ${product.price})</span>
+          <span>
+            {" "}
+            (Discount: {discountPercentage.toFixed(2)}%, Original Price: $
+            {product.price})
+          </span>
         )}
       </p>
       <button onClick={onAddToCart}>Add to Cart</button>

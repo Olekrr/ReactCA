@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import useDebounce from "./Hooks/Debounce"; 
-import SearchResultItem from "./SearchResults/SearchResults"; 
+import useDebounce from "./Hooks/Debounce";
+import SearchResultItem from "./SearchResults/SearchResults";
 import "./Searchbar.scss";
+
+/**
+ * A component that provides a search input field to filter products by title.
+ * It debounces input to limit the rate at which the filter operation is performed.
+ *
+ * @param {Object} props - Component props.
+ * @param {Array} props.products - An array of product objects to search through.
+ * @returns {React.ReactElement} The search bar with dynamically filtered search results.
+ */
 
 const SearchBar = ({ products }) => {
   const [searchInput, setSearchInput] = useState("");
-  const debouncedSearchInput = useDebounce(searchInput, 100); 
+  const debouncedSearchInput = useDebounce(searchInput, 100);
 
   const filteredProducts = debouncedSearchInput
     ? products.filter((product) =>

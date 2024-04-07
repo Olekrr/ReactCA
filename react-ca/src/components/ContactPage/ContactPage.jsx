@@ -3,6 +3,13 @@ import useForm from "./Hooks/Form";
 import FormField from "./FormFields/FormFields";
 import "./ContactPage.scss";
 
+/**
+ * The contact page containing a form with fields for full name, subject, email, and message.
+ * It demonstrates form handling in React using the "useForm" custom hook for state management.
+ *
+ * @returns {React.ReactElement} The contact page with a form and submit functionality.
+ */
+
 const ContactPage = () => {
   const initialValues = {
     fullName: "",
